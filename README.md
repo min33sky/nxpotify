@@ -1,0 +1,3 @@
+# Nxpotify
+
+> NextJS + Spotify ClonE
