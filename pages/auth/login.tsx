@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ClientSafeProvider,
-  getProviders,
-  LiteralUnion,
-  signIn as SignInToProvider,
-} from 'next-auth/react';
+import { ClientSafeProvider, getProviders, LiteralUnion, signIn } from 'next-auth/react';
 import { BuiltInProviderType } from 'next-auth/providers';
 import Image from 'next/image';
 
@@ -12,23 +7,27 @@ type LogInProps = {
   providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>;
 };
 
-function LogIn({ providers }: LogInProps) {
+/**
+ * 로그인 페이지
+ * @param param0
+ * @returns
+ */
+function Login({ providers }: LogInProps) {
   return (
     <>
-      <div className="">
+      <div className="flex flex-col items-center justify-center w-full min-h-screen bg-neutral-900">
         <div className="relative mb-5 w-52 h-52">
           <Image src="https://links.papareact.com/9xl" layout="fill" alt="Login_Logo" priority />
         </div>
-        <p>This is not a Real App. It is built for educational purpose only 😊</p>
 
-        <section className="mt-40">
+        <section className="">
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
               <button
-                className="p-3 text-white rounded-lg bg-slate-600"
-                onClick={() => SignInToProvider(provider.id, { callbackUrl: '/' })}
+                className="bg-[#18D860] p-5 text-white rounded-full"
+                onClick={() => signIn(provider.id, { callbackUrl: '/' })}
               >
-                Sign in with {provider.name}
+                Login with {provider.name}
               </button>
             </div>
           ))}
@@ -45,4 +44,4 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-export default LogIn;
+export default Login;

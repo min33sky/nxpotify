@@ -7,11 +7,26 @@ import {
   HeartIcon,
   RssIcon,
 } from '@heroicons/react/outline';
+import { signOut, useSession } from 'next-auth/react';
 
 function Sidebar() {
+  const { data: session, status } = useSession();
+  console.log('data: ', session);
+  console.log('status: ', status);
+
   return (
     <div className="p-5 text-sm text-gray-500 border-r border-gray-900">
       <section className="space-y-4">
+        <button
+          onClick={() => {
+            console.log('로그아웃');
+            signOut();
+          }}
+          className="flex items-center space-x-2 hover:text-white"
+        >
+          <HomeIcon className="w-5 h-5 " />
+          <p>로그아웃 (임시)</p>
+        </button>
         <button className="flex items-center space-x-2 hover:text-white">
           <HomeIcon className="w-5 h-5 " />
           <p>Home</p>

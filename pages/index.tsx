@@ -1,9 +1,14 @@
 import type { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Sidebar from '../components/Sidebar';
 
 const Home: NextPage = () => {
+  const { data: session, status } = useSession();
+  // console.log('data: ', session);
+  // console.log('status: ', status);
+
   return (
     <div className="h-screen overflow-hidden bg-neutral-900">
       <Head>
