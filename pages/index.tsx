@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Center from '../components/Center';
 import Sidebar from '../components/Sidebar';
 
 const Home: NextPage = () => {
@@ -17,10 +18,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="flex">
         {/* Sidebar */}
         <Sidebar />
         {/* Center */}
+        <Center />
       </main>
 
       <section>{/* Player */}</section>
